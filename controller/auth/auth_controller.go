@@ -40,7 +40,7 @@ func LoginController(ctx *gin.Context) {
 	//	 compare password from db with request
 	byteHash := []byte(user.Password) // password from db
 	bytePlain := []byte(req.Password) // password from request
-
+	
 	if err := bcrypt.CompareHashAndPassword(byteHash, bytePlain); err != nil {
 		httpresponse.NewErrorException(ctx, http.StatusForbidden, err)
 		return

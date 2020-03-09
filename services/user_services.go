@@ -26,7 +26,7 @@ func NewUserServiceContract(db *gorm.DB) UserServiceContract {
 func (srv *userContractService) Create(user *model.User, tx *gorm.DB) error {
 	var err error
 	// err = tx.Create(&user).Error
-	query := "INSERT INTO pengguna (name, email, password, created_at, updated_at) VALUES (?,?,?,?,?)"
+	query := "INSERT INTO users (name, email, password, created_at, updated_at) VALUES (?,?,?,?,?)"
 	err = tx.Exec(query, user.Name, user.Email, user.Password, time.Now(), time.Now()).Error
 	return err
 }
